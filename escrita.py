@@ -15,20 +15,22 @@ WHITE = pygame.Color(255, 255, 255)
 apaga=myfont.render("Apagar",1,(255,255,255))
 envia=myfont.render("Enviar",1,(255,255,255))
 
-rect=pygame.Rect(25,25,100,50)
+rect=pygame.Rect(0,0,280,280)
+sub=screen.subsurface(rect)
 
 
 
+#K_ESCAPE=pygame.KEYDOWN.K_ESCAPE
 canvas.fill(WHITE)
 
 while(True):
 	left_pressed, middle_pressed, right_pressed = mouse.get_pressed()
 	for event in pygame.event.get():
 		if event.type == pygame.KEYDOWN:
-			if event.key==K_ESCAPE:
-				pygame.quit()
-			if event.key==K_RETURN:
-				pygame.image.save(screen)
+			if event.key==pygame.K_ESCAPE:
+				sys.exit()
+			if event.key==pygame.K_RETURN:
+				pygame.image.save(sub, 'number.jpg')
 		elif left_pressed:
 			pygame.draw.circle(canvas, BLACK, (pygame.mouse.get_pos()),5)
 
